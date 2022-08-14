@@ -37,7 +37,7 @@ public ThreadPoolExecutor(int corePoolSize,
 - `keepAliveTime`：空闲线程生存的时间。如果当前线程池中的线程数量比核心线程的数量多，那么空闲的线程将在自旋等待新任务这么长时间后停止。默认核心线程不受这个参数的限制，将一直存活，
 可以通过调用`allowCoreThreadTimeOut(boolean value)`方法设定`allowCoreThreadTimeOut`参数为`true`设定核心线程也将受这个参数控制。
 - `unit`：`keepAliveTime`的时间单位，是一个枚举类型
-- `workQueue`：阻塞队列，接收到任务时，如果核心线程都在工作中，将任务暂存在任务队列当中(如果阻塞队列没有满，关于阻塞队列，参考![阻塞队列](../阻塞队列/BlockingQueue.md))
+- `workQueue`：阻塞队列，接收到任务时，如果核心线程都在工作中，将任务暂存在任务队列当中(如果阻塞队列没有满，关于阻塞队列，参考![阻塞队列](../BlockingQueue/BlockingQueue.md))
 - `threadFactory`：线程工厂，默认使用`Executors`提供的`defaultThreadFactory()`来生成，也可以使用自定义的线程工厂。
 - `handler`：拒绝策略，线程数量达到最大的线程数量，并且阻塞队列已满，将会使用这个参数规定的策略处理进入的任务。`ThreadPoolExecutor`默认提供了四种拒绝策略，分别是：
 > `CallerRunsPolicy`：在线程池没有被关闭的情况下直接运行这个任务。即直接调用任务的`run`方法运行任务。注意这种策略将在主线程中直接执行`run`方法中的任务，而不是在一个新的线程当中。
